@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <dev>
+        <ldap>
+            <url>ldaps://abc.xyz.com</url>
+            <dn>ou=blah</dn>
+            <port>666</port>
+            <bindrdn>ex=nope</bindrdn>
+            <password>not_real</password>
+        </ldap>
+    </dev>
+    <demo>
+    </demo>
+    <qa>
+    </qa>
+    <app>
+    </app>
+</config>

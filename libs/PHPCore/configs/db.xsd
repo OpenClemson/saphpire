@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:annotation>
+        <xs:documentation xml:lang="en">
+            databases
+                The root node, databases, is a complex type that may or may not have least one instance element.
+        </xs:documentation>
+    </xs:annotation>
+    <xs:element name="databases">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">
+                        instance
+                            The instance element specifies the databases that should be used in an environment.
+
+                            Since not all applications use a database, instance elements are not required.
+                    </xs:documentation>
+                </xs:annotation>
+                <xs:element name="instance" minOccurs="0" maxOccurs="unbounded">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:annotation>
+                                <xs:documentation xml:lang="en">
+                                    env
+                                        The environment that the database connections are used in.
+                                        Corresponds to the env set in a host in the hosts.xml file.
+                                        It must be a string of length >= 2 and it is required for all instances.
+
+                                    mysql
+                                        Connection parameters for a MySQL database.
+                                        It is a complex type and it is not required for all instances.
+
+                                    oracle
+                                        Connection parameters for an Oracle database.
+                                        It is a complex type and it is not required for all instances.
+                                </xs:documentation>
+                            </xs:annotation>
+                            <xs:element name="env" minOccurs="1" maxOccurs="1">
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:minLength value="2"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:element>
+                            <xs:element name="mysql" minOccurs="0" maxOccurs="unbounded">
+                                <xs:complexType>
+                                    <xs:all>
+                                        <xs:annotation>
+                                            <xs:documentation xml:lang="en">
+                                                label
+                                                    The label element is how this database will be searched for.
+                                                    It must be a string of length >= 3 and it is required for all MySQL connections.
+
+                                                username
+                                                    The username element is required for access to the database.
+                                                    It must be a string of length >= 5 and it is required for all MySQL connections.
+
+                                                password
+                                                    The password element is required for access to some databases.
+                                                    It must be a string of length >= 5 and it is not required for all MySQL connections.
+
+                                                host
+                                                    The host element is the hostname where the database is located.
+                                                    It must be a string of length >= 5 and it is required for all MySQL connections.
+
+                                                database
+                                                    The database element is the name of the MySQL database on the host requested.
+                                                    It must be a string of length >= 5 and it is required for all MySQL connections.
+
+                                                port
+                                                    The port element is the name of the port on the host to connect to.
+                                                    It must be a non-negative integer and it is not required for all MySQL connections.
+
+                                                charset
+                                                    The charset element defines the character set that the connection should use.
+                                                    It must be a string and it is not required for all MySQL connections. It is defaulted to UTF-8.
+
+                                                retries
+                                                    The retries element sets the number of times an attempt at a connection should be made.
+                                                    It must be a non-negative integer and it is not required for all MySQL connections. It is defaulted to 5.
+
+                                                error-mode
+                                                    The error-mode element sets how the adapter should respond to errors.
+                                                    It must be one of following values: exception, warning, silent.
+                                                    It is not required for all connections.
+                                            </xs:documentation>
+                                        </xs:annotation>
+                                        <xs:element name="label" minOccurs="1" maxOccurs="1">
+                                            <xs:simpleType>
+                                                <xs:restriction base="xs:string">
+                                                    <xs:minLength value="3"/>
+                                                </xs:restriction>
+                                            </xs:simpleType>
+                                        </xs:element>
+                                        <xs:element name="username" minOccurs="1" maxOccurs="1">
+                                            <xs:simpleType>
+                                                <xs:restriction base="xs:string">
+                                                    <xs:minLength value="5"/>
+                                                </xs:restriction>
+                                            </xs:simpleType>
+                                        </xs:element>
+                                        <xs:element name="password" minOccurs="0" maxOccurs="1">
+                                            <xs:simpleType>
+                                                <xs:restriction base="xs:string">
+                                                    <xs:minLength value="5"/>
+                                                </xs:restriction>
+                                            </xs:simpleType>
+                                        </xs:element>
+                                        <xs:element name="host" minOccurs="1" maxOccurs="1">
+                                            <xs:simpleType>
+                                                <xs:restriction base="xs:string">
+                                                    <xs:minLength value="5"/>
+                                                </xs:restriction>
+                                            </xs:simpleType>
+                                        </xs:element>
+                                        <xs:element name="database" minOccurs="1" maxOccurs="1">
+                                            <xs:simpleType>
+                                                <xs:restriction base="xs:string">
+                                                    <xs:minLength value="5"/>
+                                                </xs:restriction>
+                                            </xs:simpleType>
+                                        </xs:element>
+                                        <xs:element name="port" type="xs:nonNegativeInteger" minOccurs="0" maxOccurs="1"></xs:element>
+                                        <xs:element name="charset" type="xs:string" minOccurs="0" maxOccurs="1"></xs:element>
+                                        <xs:element name="retries" type="xs:nonNegativeInteger" minOccurs="0" maxOccurs="1"></xs:element>
+                                        <xs:element name="error-mode" type="xs:string" minOccurs="0" maxOccurs="1">
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="exception"/>
+                                                <xs:enumeration value="warning"/>
+                                                <xs:enumeration value="silent"/>
+                                            </xs:restriction>
+                                        </xs:element>
+                                    </xs:all>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="oracle" minOccurs="0" maxOccurs="unbounded">
+                                <xs:complexType>
+                                    <xs:all>
+                                        <xs:annotation>
+                                            <xs:documentation xml:lang="en">
+                                                label
+                                                    The label element is how this database will be searched for.
+                                                    It must be a string of length >= 3 and it is required for all Oracle connections.
+
+                                                username
+                                                    The username element is required for access to the database.
+                                                    It must be a string of length >= 5 and it is required for all Oracle connections.
+
+                                                password
+                                                    The password element is required for access to some databases.
+                                                    It must be a string of length >= 5 and it is not required for all Oracle connections.
+
+                                                host
+                                                    The host element is the hostname where the database is located.
+                                                    It must be a string of length >= 5 and it is required for all Oracle connections.
+
+                                                service
+                                                    The service element is the service name of the Oracle database on the host requested.
+                                                    It must be a string of length >= 5 and it is required for all Oracle connections.
+
+                                                port
+                                                    The port element is the name of the port on the host to connect to.
+                                                    It must be a non-negative integer and it is not required for all Oracle connections.
+
+                                                charset
+                                                    The charset element defines the character set that the connection should use.
+                                                    It must be a string and it is not required for all Oracle connections. It is defaulted to UTF-8.
+
+                                                retries
+                                                    The retries element sets the number of times an attempt at a connection should be made.
+                                                    It must be a non-negative integer and it is not required for all Oracle connections. It is defaulted to 5.
+                                            </xs:documentation>
+                                        </xs:annotation>
+                                        <xs:element name="label" minOccurs="1" maxOccurs="1">
+                                            <xs:simpleType>
+                                                <xs:restriction base="xs:string">
+                                                    <xs:minLength value="3"/>
+                                                </xs:restriction>
+                                            </xs:simpleType>
+                                        </xs:element>
+                                        <xs:element name="username" minOccurs="1" maxOccurs="1">
+                                            <xs:simpleType>
+                                                <xs:restriction base="xs:string">
+                                                    <xs:minLength value="5"/>
+                                                </xs:restriction>
+                                            </xs:simpleType>
+                                        </xs:element>
+                                        <xs:element name="password" minOccurs="0" maxOccurs="1">
+                                            <xs:simpleType>
+                                                <xs:restriction base="xs:string">
+                                                    <xs:minLength value="5"/>
+                                                </xs:restriction>
+                                            </xs:simpleType>
+                                        </xs:element>
+                                        <xs:element name="host" minOccurs="1" maxOccurs="1">
+                                            <xs:simpleType>
+                                                <xs:restriction base="xs:string">
+                                                    <xs:minLength value="5"/>
+                                                </xs:restriction>
+                                            </xs:simpleType>
+                                        </xs:element>
+                                        <xs:element name="service" minOccurs="1" maxOccurs="1">
+                                            <xs:simpleType>
+                                                <xs:restriction base="xs:string">
+                                                    <xs:minLength value="5"/>
+                                                </xs:restriction>
+                                            </xs:simpleType>
+                                        </xs:element>
+                                        <xs:element name="port" type="xs:nonNegativeInteger" minOccurs="0" maxOccurs="1"></xs:element>
+                                        <xs:element name="charset" type="xs:string" minOccurs="0" maxOccurs="1"></xs:element>
+                                        <xs:element name="retries" type="xs:nonNegativeInteger" minOccurs="0" maxOccurs="1"></xs:element>
+                                    </xs:all>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

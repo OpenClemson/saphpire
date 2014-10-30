@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:annotation>
+        <xs:documentation xml:lang="en">
+            contacts
+                The root node, contacts, is a complex type that may or may not have least one contact element.
+        </xs:documentation>
+    </xs:annotation>
+    <xs:element name="contacts">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">
+                        contact
+                            The contact element contains the name, username, email, and role of the person.
+
+                            All developers should be in the contacts file, but no contacts are required for an application to function.
+                    </xs:documentation>
+                </xs:annotation>
+                <xs:element name="contact" minOccurs="0" maxOccurs="unbounded">
+                    <xs:complexType>
+                        <xs:all>
+                            <xs:annotation>
+                                <xs:documentation xml:lang="en">
+                                    name
+                                        The name of the person.
+
+                                    username
+                                        The Clemson username of the person.
+
+                                    email
+                                        The person's email address.
+
+                                    role
+                                        The person's access level in the application.
+                                </xs:documentation>
+                            </xs:annotation>
+                            <xs:element name="name" minOccurs="1" maxOccurs="1">
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:minLength value="5"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:element>
+                            <xs:element name="username" minOccurs="1" maxOccurs="1">
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:pattern value="[a-zA-Z0-9]+"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:element>
+                            <xs:element name="email" minOccurs="1" maxOccurs="1">
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:minLength value="5"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:element>
+                            <xs:element name="role" minOccurs="1" maxOccurs="1">
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:minLength value="3"/>
+                                        <xs:pattern value="[a-zA-Z0-9]+"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:element>
+                        </xs:all>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

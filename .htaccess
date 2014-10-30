@@ -1,0 +1,22 @@
+# follow symlinks and deny directory access
+Options +FollowSymLinks -Indexes
+
+# deny all xml files
+<Files ~ "^.*\.([Xx][Mm][Ll])">
+    Order allow,deny
+    Deny from all
+    Satisfy All
+</Files>
+
+# disable the server signature
+ServerSignature Off
+
+# set the default character set
+AddDefaultCharset utf-8
+
+# compress the following mime-types
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE application/javascript \
+                                  application/x-javascript \
+                                  text/css
+</IfModule>

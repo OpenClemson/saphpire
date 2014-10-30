@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:simpleType name="urlValueType">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="3"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:complexType name="urlType">
+        <xs:simpleContent>
+            <xs:extension base="urlValueType">
+                <xs:attribute name="env" type="xs:string" use="required"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:simpleType name="tokenValueType">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="10"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:complexType name="tokenType">
+        <xs:simpleContent>
+            <xs:extension base="tokenValueType">
+                <xs:attribute name="env" type="xs:string" use="required"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:annotation>
+        <xs:documentation xml:lang="en">
+            services
+                The root node, services, is a complex type that includes 0 or more child nodes.
+        </xs:documentation>
+    </xs:annotation>
+    <xs:element name="services">
+        <xs:complexType>
+            <xs:all>
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">
+                        service
+                            The service element defines a service that is used by the application.
+                            It is NOT required for all applications. It is required for all applications
+                            that use the services of other applications.
+
+                            There may be 0 or more service elements defined.
+                    </xs:documentation>
+                </xs:annotation>
+                <xs:element name="service" minOccurs="0" maxOccurs="1">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:annotation>
+                                <xs:documentation xml:lang="en">
+                                    name
+                                        The name element is the label that will be used to refer to the service.
+                                        It must be a string of length >= 3 and it is required for all service elements.
+
+                                    url
+                                        The url element is the base URL of the service. It must have an env attribute
+                                        defining the application environment that uses this URL.
+                                        It must be a string or length >= 10 and it is required for all service elements.
+
+                                    token
+                                        The token element is the consumer token assigned to this application by the Service Broker
+                                        that allows this application to use the APIs contained within this service. It must have
+                                        an env attribute defining the application environment that uses this token.
+
+                                        It must be a string of length >= 10 and is required for all service elements.
+
+                                    api
+                                        The api element designates one of the APIs the service owns.
+
+                                        There may be zero or more API elements.
+                                </xs:documentation>
+                            </xs:annotation>
+                            <xs:element name="name" minOccurs="1" maxOccurs="1">
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:minLength value="3"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:element>
+                            <xs:element name="url" type="urlType" minOccurs="1" maxOccurs="unbounded"/>
+                            <xs:element name="token" type="tokenType" minOccurs="1" maxOccurs="unbounded"/>
+                            <xs:element name="api" minOccurs="0" maxOccurs="unbounded">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:annotation>
+                                            <xs:documentation xml:lang="en">
+                                                name
+                                                    The name element is the label that will be used to refer to the API.
+                                                    It must be a string of length >= 3 and it is required for all api elements.
+
+                                                file
+                                                    The file element is the file location of the API.
+                                                    It must be a string or length >= 5 and it is required for all service elements.
+
+                                                token
+                                                    The token element is the consumer token assigned to this application by the
+                                                    Service Broker that allows this application to use the API. It must have an
+                                                    env attribute defining the application environment that uses this token.
+
+                                                    It must be a string of length >= 10 and is required for all service elements.
+                                            </xs:documentation>
+                                        </xs:annotation>
+                                        <xs:element name="name" minOccurs="1" maxOccurs="1">
+                                            <xs:simpleType>
+                                                <xs:restriction base="xs:string">
+                                                    <xs:minLength value="3"/>
+                                                </xs:restriction>
+                                            </xs:simpleType>
+                                        </xs:element>
+                                        <xs:element name="file" minOccurs="1" maxOccurs="1">
+                                            <xs:simpleType>
+                                                <xs:restriction base="xs:string">
+                                                    <xs:minLength value="5"/>
+                                                </xs:restriction>
+                                            </xs:simpleType>
+                                        </xs:element>
+                                        <xs:element name="token" type="tokenType" minOccurs="0" maxOccurs="unbounded"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:all>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

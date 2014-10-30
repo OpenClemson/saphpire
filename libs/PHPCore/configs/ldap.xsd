@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:annotation>
+        <xs:documentation xml:lang="en">
+            ldap
+                The root node, ldap, is a complex type that may or may not have least one instance element.
+        </xs:documentation>
+    </xs:annotation>
+    <xs:element name="ldap">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">
+                        instance
+                            The instance element specifies the connections that should be used in an environment.
+
+                            Since not all applications use LDAP, instance elements are not required.
+                    </xs:documentation>
+                </xs:annotation>
+                <xs:element name="instance" minOccurs="0" maxOccurs="unbounded">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:annotation>
+                                <xs:documentation xml:lang="en">
+                                    env
+                                        The environment that the database connections are used in.
+                                        Corresponds to the env set in a host in the hosts.xml file.
+                                        It must be a string of length >= 2 and it is required for all instances.
+
+                                    connection
+                                        Parameters used to establish an LDAP connection.
+                                        It is a complex type and at least one is required for all instances.
+                                </xs:documentation>
+                            </xs:annotation>
+                            <xs:element name="env" minOccurs="1" maxOccurs="1">
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:minLength value="2"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:element>
+                            <xs:element name="connection" minOccurs="1" maxOccurs="unbounded">
+                                <xs:complexType>
+                                    <xs:all>
+                                        <xs:annotation>
+                                            <xs:documentation xml:lang="en">
+                                                label
+                                                    The label element is how this connection will be searched for.
+                                                    It must be a string of length >= 3 and it is required for all LDAP connections.
+
+                                                url
+                                                    The host that the connection will connect to.
+                                                    It must be a string of length >= 10 and it is required for all LDAP connections.
+
+                                                dn
+                                                    The dn describes the fully qualified path to an entry.
+                                                    It must be a string of length >= 3 and it is required for all LDAP connections.
+
+                                                port
+                                                    The port on the host to connect to.
+                                                    It must be a non-negative number and it is not required. It defaults to 389.
+
+                                                bindrdn
+                                                    The bindrdn element describes the partial path to the entry relative to another entry in the tree.
+                                                    It must be a string of length >= 3 and it is not required for each LDAP connection.
+
+                                                password
+                                                    The password element allows access to the host provided.
+                                                    It must be a string of length >= 3 and it is not required for each LDAP connection.
+                                            </xs:documentation>
+                                        </xs:annotation>
+                                        <xs:element name="label" minOccurs="1" maxOccurs="1">
+                                            <xs:simpleType>
+                                                <xs:restriction base="xs:string">
+                                                    <xs:minLength value="3"/>
+                                                </xs:restriction>
+                                            </xs:simpleType>
+                                        </xs:element>
+                                        <xs:element name="url" minOccurs="1" maxOccurs="1">
+                                            <xs:simpleType>
+                                                <xs:restriction base="xs:string">
+                                                    <xs:minLength value="5"/>
+                                                </xs:restriction>
+                                            </xs:simpleType>
+                                        </xs:element>
+                                        <xs:element name="dn" minOccurs="1" maxOccurs="1">
+                                            <xs:simpleType>
+                                                <xs:restriction base="xs:string">
+                                                    <xs:minLength value="5"/>
+                                                </xs:restriction>
+                                            </xs:simpleType>
+                                        </xs:element>
+                                        <xs:element name="port" type="xs:nonNegativeInteger" minOccurs="0" maxOccurs="1"></xs:element>
+                                        <xs:element name="bindrdn" minOccurs="0" maxOccurs="1">
+                                            <xs:simpleType>
+                                                <xs:restriction base="xs:string">
+                                                    <xs:minLength value="5"/>
+                                                </xs:restriction>
+                                            </xs:simpleType>
+                                        </xs:element>
+                                        <xs:element name="password" minOccurs="0" maxOccurs="1">
+                                            <xs:simpleType>
+                                                <xs:restriction base="xs:string">
+                                                    <xs:minLength value="5"/>
+                                                </xs:restriction>
+                                            </xs:simpleType>
+                                        </xs:element>
+                                    </xs:all>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

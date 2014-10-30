@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <dev>
+        <ldap>
+            <url>ldaps://cuid.clemson.edu</url>
+            <dn>ou=users,ou=people,o=cuid</dn>
+            <port>636</port>
+            <bindrdn>cn=authonly,ou=proxy,o=cuid</bindrdn>
+            <password>z3brE4+j5xU!</password>
+        </ldap>
+    </dev>
+    <demo>
+
+    </demo>
+    <qa>
+
+    </qa>
+    <app>
+
+    </app>
+</config>

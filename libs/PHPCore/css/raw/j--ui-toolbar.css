@@ -1,0 +1,67 @@
+.j--ui-toolbar {/*display:inline-block;*/
+    font-family: inherit;
+    padding: 0 0 5px 0;
+    display:table;
+    zoom:1;
+/* cross browser?
+--------------------
+display:-moz-inline-stack;
+display:inline-block;
+zoom:1;
+*display:inline;
+**/}
+.j--ui-toolbar ul {
+    list-style:none;
+    margin:0;
+    padding:2px 8px 2px 0;
+    text-align: center;
+    border: 1px solid #DBDBDB;
+
+    -moz-border-radius: 4px;-webkit-border-radius: 4px;border-radius: 4px;
+
+    background: rgb(255,255,255);
+    background: -moz-linear-gradient(top,  rgba(255,255,255,1) 0%, rgba(229,229,229,1) 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,1)), color-stop(100%,rgba(229,229,229,1)));
+    background: -webkit-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(229,229,229,1) 100%);
+    background: -o-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(229,229,229,1) 100%);
+    background: -ms-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(229,229,229,1) 100%);
+    background: linear-gradient(to bottom,  rgba(255,255,255,1) 0%,rgba(229,229,229,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e5e5e5',GradientType=0 );
+}
+.j--ui-toolbar li {
+    display:inline-block;
+    *display:inline;
+    vertical-align: top;
+    margin:0 3px;
+    color: grey;
+    text-decoration: none;
+    font-size:95%;
+    white-space: nowrap;
+    text-align: center;
+    text-shadow: 0 1px 1px #fff;
+}
+.j--ui-toolbar li+li {
+    border-left:1px solid #dbdbdb;
+}
+.j--ui-toolbar li a {
+    color: grey;
+    display:inline-block;
+    *display: inline;
+    width:100%;
+    padding: 5px;
+    height:20px;
+    line-height:20px;
+    text-align: center;
+    text-decoration: none;
+}
+.j--ui-toolbar li span {
+    display: inline-block;
+    padding: 5px 3px 5px 10px;
+}
+.j--ui-toolbar li a:hover {
+    color: #474747;
+    text-shadow: 0 1px 1px #fff;
+}
+.j--ui-toolbar li a.active {
+    text-decoration: underline;
+}

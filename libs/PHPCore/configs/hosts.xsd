@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:annotation>
+        <xs:documentation xml:lang="en">
+            hosts
+                The root node, hosts, is a complex type that includes at least one host element.
+        </xs:documentation>
+    </xs:annotation>
+    <xs:element name="hosts">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">
+                        host
+                            The host element contains the name of the host and the environment that it represents.
+                            For example, the host named localhost should represent the dev environment.
+
+                            At least one host element is required per application, however a host element
+                            is required for every environment this application will run on.
+                    </xs:documentation>
+                </xs:annotation>
+                <xs:element name="host" minOccurs="1" maxOccurs="unbounded">
+                    <xs:complexType>
+                        <xs:all>
+                            <xs:annotation>
+                                <xs:documentation xml:lang="en">
+                                    name
+                                        The hostname of the server the application is running on.
+                                        Ex) example.dev.clemson.edu
+
+                                    env
+                                        The environment that the application should run in.
+                                        Ex) dev, demo, qa, prod
+                                        This element is required and there can only be one per host.
+                                </xs:documentation>
+                            </xs:annotation>
+                            <xs:element name="name" minOccurs="1" maxOccurs="1">
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:minLength value="5"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:element>
+                            <xs:element name="env" minOccurs="1" maxOccurs="1">
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:minLength value="2"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:element>
+                        </xs:all>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

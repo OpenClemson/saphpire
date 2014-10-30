@@ -1,0 +1,108 @@
+.alt {color:#235D85;}
+.small {font-size:85% !important;}
+.xsmall {font-size:75% !important;}
+.tip {border-bottom:1px dotted;cursor:help;}
+.tt90 {
+    -ms-transform:rotate(90deg); /* IE 9 */
+    -moz-transform:rotate(90deg); /* Firefox */
+    -webkit-transform:rotate(90deg); /* Safari and Chrome */
+    -o-transform:rotate(90deg); /* Opera */
+}
+
+/* labels */
+.label {
+    border-radius: 3px 3px 3px 3px;
+    background-color: #999999;
+    color: #FFFFFF;
+    display: inline-block;
+    font-size: 11.844px;
+    font-weight: bold;
+    line-height: 14px;
+    padding: 2px 4px;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+    vertical-align: baseline;
+    white-space: nowrap;
+}
+.label-success {
+    background-color: #468847;
+}
+.label-warning {
+    background-color: #F89406;
+}
+.label-important {
+    background-color: #B94A48;
+}
+.label-info {
+     background-color: #3A87AD;
+}
+.label-inverse {
+     background-color: #333333;
+}
+
+/* alerts */
+.alert, .alert h4 {
+    color: #C09853 !important;
+}
+.alert {
+    background-color: #FCF8E3;
+    border: 1px solid #FBEED5;
+    border-radius: 4px 4px 4px 4px;
+    margin-bottom: 20px;
+    padding: 8px 35px 8px 14px;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+.alert-block {
+    padding-bottom: 14px;
+    padding-top: 14px;
+}
+.alert-danger, .alert-error {
+    background-color: #F2DEDE;
+    border-color: #EED3D7;
+    color: #B94A48 !important;
+}
+.alert-success {
+    background-color: #DFF0D8;
+    border-color: #D6E9C6;
+    color: #468847 !important;
+}
+.alert-info {
+    background-color: #D9EDF7;
+    border-color: #BCE8F1;
+    color: #3A87AD !important;
+}
+
+/* emphasis text */
+.text-muted {color:#999999;}
+.text-warning {color:#C09853;}
+.text-error {color: #B94A48;}
+.text-info {color: #3A87AD;}
+.text-success {color: #468847;}
+
+/* close button */
+.alert .close {
+    line-height: 20px;
+    position: relative;
+    right: -21px;
+    top: -2px;
+}
+button.close {
+    background: none repeat scroll 0 0 transparent;
+    border: 0 none;
+    cursor: pointer;
+    padding: 0;
+}
+.close {
+    color: #000000;
+    float: right;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 20px;
+    opacity: 0.2;
+    text-shadow: 0 1px 0 #FFFFFF;
+}
+.close:hover {
+    opacity: 0.5;
+}
+
+/* drop down menus */
+.menu {width: 150px;position: absolute;}

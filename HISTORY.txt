@@ -1,0 +1,177 @@
+/***************************************************************\
+ * Juggernaut Development System presents:                     *
+ * Saphpire Software                                           *
+ *                                                             *
+ * Developed exclusively by Team Rah                           *
+ *                                                             *
+ * Version: 0.8.2 beta                                          *
+ *                                                             *
+ * This software is licensed and protected. You may not use    *
+ * this software without written, expressed permission from    *
+ * CCIT Application Services.                                  *
+ *                                                             *
+ * Proprietary and Confidential                                *
+\***************************************************************/
+
+For Installation instructions:
+Please refer to the provided install.txt.
+
+PHPCore Change Log:
+________________________________________________________________
+
+0.8.2 beta
+ - removed all files deprecated in 0.2
+ - removed GetApplicationName from Convenience.php
+ + updated error-handling.php in includes to pull in services.php and setup cLogService if possible
+ + cLogService has been updated to use cRequest and include the app's consumer token in requests
+ - removing service-used from app.xml
+ + updating timestamps in app.xml to be valid per app.xsd
+ - removing service-used from app.xsd
+ + adding service.xsd to validate services.xml
+ - removing log service setup from base-bootstrap.php
+ + adding Service Logging in docs with an example of how to enable logging through the service
+ + adding Service 101 in docs to show general use cases for dealing with services
+ + updating core JS and CSS
+ + added host check to mysql connection
+ - fixed FollowSymLinks
+ + fixed comment handling in db.xml
+ + updated LDAP reference of cWebValidation -> cValidateWeb
+ + replaced Deprecated object calls with new versions
+ + fixed SutureFiles to handle caching better
+ + fixed bugs in search css
+ + fixed bugs in core js
+ + added new core JS
+ + added new core CSS
+ + fixed undefined array utilities property to cXmlUtilities class.
+ + updated reference to $this from static function. self::GetInstance, in cAnomaly class.
+ + fix for single array item in xml config read
+ + updated cBasePresentation constructor to pass-thru specified template directories.
+ + updated reference from cMysqlDb to cMySqlDb
+ + updated core hash
+ - removed references to undefined parent constructor for validation classes.
+ - removed PingBootstrap and ProxyBootstrap and replaced them with ping-bootstrap and proxy-bootstrap
+ + updated /services/ping/ping.php to pull in new ping-bootstrap
+ + updated /services/proxy/proxy.php to pull in new proxy-bootstrap
+ - removed /services/ping.php because an API cannot exist without a service
+ + updating LDAPLogin business and presentation to validate the form correctly
+ + updating all core classes to use cAnomaly::BubbleException
+ - removing ErrorHandling.php and the deprecated functions ExceptionHandler and BubbleException
+ - removing cLogger
+ - deprecated GetApplicationName in Convenience.php. planned removal in 0.9.8 release.
+ - deprecated cBaseAuth and added cAuthBase. planned removal in 0.9.8 release.
+   cBaseAuth extends cAuthBase for backwards compatibility.
+ - deprecated cCUTokenAuth and added cAuthCUToken. planned removal in 0.9.8 release.
+   cCUTokenAuth extends cAuthCUToken for backwards compatibility.
+ - deprecated cLdapAuth and added cAuthLdap. planned removal in 0.9.8 release.
+   cLdapAuth extends cAuthLdap for backwards compatibility.
+ - deprecated cShibAuth and added cAuthShib. planned removal in 0.9.8 release.
+   cShibAuth extends cAuthShib for backwards compatibility.
+ - deprecated cMysqlDb and added cDbMysql. planned removal in 0.9.8 release.
+   cMysqlDb extends cDbMysql for backwards compatibility.
+ - deprecated cOracleDb and added cDbOracle. planned removal in 0.9.8 release.
+   cOracleDb extends cDbOracle for backwards compatibility.
+ - deprecated cBasePresentation and added cPresBase. planned removal in 0.9.8 release.
+   cBasePresentation extends cPresBase for backwards compatibility.
+ - deprecated cBaseBusiness and added cBusBase. planned removal in 0.9.8 release.
+   cBaseBusiness extends cBusBase for backwards compatibility.
+ - deprecated cHttpRequest and added cRequestHttp. planned removal in 0.9.8 release.
+   cHttpRequest extends cRequestHttp for backwards compatibility.
+ - deprecated cCurlRequest and added cRequestCurl. planned removal in 0.9.8 release.
+   cCurlRequest extends cRequestCurl for backwards compatibility.
+ - deprecated cBaseValidation and added cValidateBase. planned removal in 0.9.8 release.
+   cBaseValidation extends cValidateBase for backwards compatibility.
+ - deprecated cClemsonValidation and added cValidateClemson. planned removal in 0.9.8 release.
+   cClemsonValidation extends cValidateClemson for backwards compatibility.
+ - deprecated cStringValidation and added cValidateString. planned removal in 0.9.8 release.
+   cStringValidation extends cValidateString for backwards compatibility.
+ - deprecated cStringValidation and added cValidateString. planned removal in 0.9.8 release.
+   cStringValidation extends cValidateString for backwards compatibility.
+ + updated references to Core_0 to now be Core
+ + updating all class docblocks to include author, package, subpackage, and version if missing
+ + updating references to the request classes' getDebugOutput function to use GetDebugOutput
+ - removing unused constructor in cBusPing
+ + fixing formatting in multiple files
+ - removing unused array utilities in cXmlUtilities
+ - adding in James' fixes for cFormUtilities
+ + updated condition for log folder is_writable check.
+ + updated MySQL GetQueryResults error handling to get error on exception.
+ + added SutureFiles to combine assets
+ + cBusAnomaly updated to support print_r instead of vardump. recursion fix
+ + cBusProxy: replaced getStatus with GetStatus
+ + cLogManager fix for microtime
+ + updated cRequest::getStatus to GetStatus
+ + anomaly.css
+ + added host to error message on host configuration
+ + fixes for debug.php
+ + Added unit tests for Template engine
+ + updated schema of ldap.xml config
+ + updated handling of exception hierarchy
+ + multiple fixes and tweaks for more consistent and improved error and exception handling
+ + updated database adapter
+ + updated LDAP class to support new config schema
+ + updated LDAP auth to support to config schema and error handling
+ + updated MySQL database adapter to support new config schema
+ + updated Oracle database adapter to support new config schema
+ + XSD validation added for all XML config files
+ + updated README.txt and core.hash
+ + update line endings to permissions script to unix
+ + added fix for singular element arrays loaded by xml. keeps the output consistent.
+ + added recursive flag for templates directory
+ - removed commented script code. updated snapshot file hash creation to handle read errors
+ - moved ldap login to base level
+ - moved anomaly html to templates
+ + updated core sanity check in setperms.sh
+ + cRequest: updated methods to return response body string, sets response code as property.
+ + updated references to cRequest calls in console pulse and service proxy.
+ + fixed issue with snapshot reading lower-level files.
+ - removed PHP_CodeSniffer library from core libraries.
+ - removed logging service definition from app.xml.
+ + Updating cAnomaly to ensure that $GLOBALS is never output.
+   $GLOBALS contains a reference to itself so error/exception handling was blowing up.
+ + Enabling recursive password filtering on attempted logs.
+ - Removing default app token from the log service.
+ + Updating cLogXml to get log types appropriately since 0.9.5.2 cleared the log files instead of deleting them.
+ - Removing unused images.
+ - Removing unused tests.
+ - Removing unused doc for ping service.
+ + fixed bugs in snapshot service.
+ + fixed ClearEntriesBefore
+ + fixed LDAP login redirect.
+ + started working on Beacon. updating to use snapshot service.
+ + fixed require_once reference to cAnomaly in cLogger.
+ + fixed estimated log file size.
+ + switch from unlinking file to replacing contents with valid xml.
+ + added template tags for beacon
+ + fixed GetConfig when there are environment errors.
+ + added missing upgrade files.
+ + patch to oracle error output.
+ + JuggernautCSS
+ + Templating of developer debug output.
+ + Split configurations. new config.php, new cBaseConfig.
+ + New base bootstraps.
+ + New Log Manager.
+ + Backwards-compatible cLogger class.
+ + New debugging functions.
+ + Updated LDAP Login module to resemble login.clemson.edu.
+ + Added this readme/changelog.
+ - Removed RelativePathToBase ( needs windows support ).
+ + Added Snapshot service.
+ + Set initial core hash.
+ + Turned off debug output from HTTP Requests.
+ + added verbose output to setperms.sh.
+ + fix for single value array from xml utilities.
+ + RunQuery error info for cMySqlDb.
+ + BuildOptions patch
+ + RelativePathToBase
+ + patched cBaseAuth.
+ + updated ValidateAlnum to support whitespace.
+ + LDAP Auth
+ + LDAP Login Module
+ + LDAP client class
+ + Service Proxy
+ + Generic Requests ( cURL and pecl-HTTP support )
+ + Clemson Validation fix
+ + SSH2
+ + SFTP
+ + SCP
+ + Ping service

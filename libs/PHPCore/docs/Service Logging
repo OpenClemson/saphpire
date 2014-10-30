@@ -1,0 +1,41 @@
+To setup service logging, copy and paste the following service
+into services.xml, fill in the areas designated by --> <--, and everything should just start working.
+
+<?xml version="1.0" encoding="UTF-8"?>
+<services>
+    <service>
+        <name>Log</name>
+        <url env="dev">alsutilities.dev.clemson.edu/services/log/</url>
+        <url env="demo">alsutilities.demo.clemson.edu/services/log/</url>
+        <url env="qa">alsutilities.qa.clemson.edu/services/log/</url>
+        <url env="prod">alsutilities.app.clemson.edu/services/log/</url>
+        <token env="dev">--> add your token here <--</token>
+        <token env="demo">--> add your token here <--</token>
+        <token env="qa">--> add your token here <--</token>
+        <token env="prod">--> add your token here <--</token>
+        <api>
+            <name>get-contents</name>
+            <file>get-contents.php</file>
+        </api>
+        <api>
+            <name>log</name>
+            <file>log.php</file>
+        </api>
+        <api>
+            <name>clear</name>
+            <file>clear.php</file>
+        </api>
+        <api>
+            <name>clear-before</name>
+            <file>clear-before.php</file>
+        </api>
+        <api>
+            <name>get-types</name>
+            <file>get-types.php</file>
+        </api>
+        <api>
+            <name>type-stats</name>
+            <file>type-stats.php</file>
+        </api>
+    </service>
+</services>

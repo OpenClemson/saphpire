@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databases>
+    <instance>
+        <env>dev</env>
+        <mysql>
+            <label>test</label>
+            <username>test</username>
+            <password></password>
+            <host>localhost</host>
+            <database>test</database>
+        </mysql>
+    </instance>
+</databases>

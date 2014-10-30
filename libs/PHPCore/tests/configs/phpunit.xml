@@ -1,0 +1,14 @@
+<phpunit verbose="true">
+    <testsuites>
+        <testsuite name="Logging">
+            <file>../classes/cLogXmlTest.php</file>
+            <file>../classes/cLogManagerTest.php</file>
+        </testsuite>
+        <testsuite name="Application">
+            <file>../classes/cApplicationTest.php</file>
+        </testsuite>
+        <testsuite name="Template">
+            <file>../classes/cTemplateTest.php</file>
+        </testsuite>
+    </testsuites>
+</phpunit>

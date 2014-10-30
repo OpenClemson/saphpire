@@ -1,0 +1,300 @@
+<html>
+    <head>
+        <meta name="viewport"
+        content="width=device-width, minimum-scale=1.0, maximum-scale=1.0,
+        user-scalable=no">
+        <title>Clemson Login</title>
+        <script type="application/x-javascript">
+            addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+            function hideURLbar()
+            {
+                window.scrollTo(0, 1);
+            }
+        </script>
+        <script type="text/javascript" src="https://login.clemson.edu/scripts/jquery.js"></script>
+        <script type="text/javascript" src="https://login.clemson.edu/scripts/detect.js"></script>
+        <style type="text/css">
+            *
+            {
+                vertical-align: baseline;
+                font-weight: inherit;
+                font-family: inherit;
+                font-style: inherit;
+                border: 0 none;
+                outline: 0;
+                padding: 0;
+                margin: 0;
+            }
+
+            #container
+            {
+                margin: 0 auto;
+            }
+
+            #header
+            {
+                width: 100%;
+                background: #f66733;
+                filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f66733',
+                    endColorstr='#d64713');
+                background: -webkit-gradient(linear, 0 top, 0 bottom, from(#f66733),
+                    to(#d64713));
+                background: -moz-linear-gradient(
+                  center bottom,
+                  rgb(214,71,19) 28%,
+                  rgb(246,103,51) 50%
+                  );
+                height: 100px;
+                border-bottom: #000000 solid 2px;
+                -webkit-box-shadow: 0px 5px 3px #f0f0f0;
+            }
+
+            #links
+            {
+                padding-top: 16px;
+                padding-right: 20px;
+                text-align: right;
+                color: #f67743;
+            }
+
+            #links a
+            {
+                color: #ffffff;
+                text-decoration: none;
+            }
+
+            #links a:hover
+            {
+                text-decoration: underline;
+            }
+
+            div
+            {
+                font-family: Verdana, Arial, sans-serif;
+                font-size: 11px;
+            }
+
+            img
+            {
+                float: left;
+                margin-top: 10px;
+                margin-left: 20px;
+                height: 80px;
+            }
+
+            p
+            {
+                font-size: 20pt;
+            }
+
+            input
+            {
+                left: 55%;
+            }
+
+            #centered
+            {
+                position: relative;
+                clear: left;
+                width: 100%;
+                height: 200px;
+                margin 0 auto;
+            }
+
+            #main
+            {
+                position: absolute;
+                left: 0;
+                top: 0;
+                bottom: 0;
+                height: 100%;
+                width: 100%;
+            }
+
+            #form
+            {
+                text-align: center;
+                padding: 20px 0 0 0;
+            }
+
+            #form div.rounded_input
+            {
+                margin: 0 auto;
+                margin-bottom: 10px;
+                width: 200px;
+                height: 40px;
+            }
+
+            #form div.rounded_input input
+            {
+                display: block;
+                padding: 0px 10px 0px 10px;
+                /*  padding: 10px 10px 10px 10px; */
+                width: 200px;
+                height: 30px;
+                font-size: 13pt;
+                -webkit-border-radius: 5px;
+                -moz-border-radius: 5px;
+                border-radius: 5px 5px 5px 5px;
+                border: 2px solid #000000;
+            }
+
+            #form div.label
+            {
+                margin: 0 auto;
+                padding: 0 0 6px 5px;
+                width: 200px;
+                font-size: 14pt;
+                color: #000000;
+            }
+
+            #form div.information
+            {
+                margin: 0 auto;
+                padding: 20px 0 20px 0;
+                font-size: 12pt;
+                color: #000000;
+            }
+
+            #form .button
+            {
+                margin: 0 10px 0 5px;
+                padding: 2px 15px;
+                font-size: 11pt;
+                color: #ffffff;
+                vertical-align: top;
+                border: 1px solid #cf4a29;
+                background: #f66733;
+            }
+
+
+            /** desktop/mobile section **/
+
+            div .hide
+            {
+                display: none;
+            }
+
+            #desktop_header
+            {
+                margin: 0 auto;
+                width: 500px;
+                padding: 20px 0 0 0;
+                font-size: 14pt;
+                text-align: center;
+                color: #a25016;
+            }
+
+            #desktop_footer
+            {
+                margin: 0 auto;
+                width: 500px;
+                padding: 20px 0 0 0;
+                font-size: 10pt;
+                text-align: center;
+                color: #a25016;
+            }
+
+            #mobile_header
+            {
+                padding: 25px 0 0 0;
+            }
+
+            #mobile_footer
+            {
+                margin: 0 auto;
+                padding: 35px 0 30px 0;
+                font-size: 10pt;
+                text-align: center;
+                color: #522d80;
+            }
+
+            #form div.error_msg
+            {
+                font-size: 12pt;
+                padding: 0 0 5px 0;
+                color: #ff3333;
+            }
+
+            /** IE garbage **/
+
+            body
+            {
+                text-align: center;
+            }
+
+            /** handle javascript issues **/
+
+            .disabled
+            {
+                display: none;
+            }
+
+            .noscript .enabled
+            {
+                display: none;
+            }
+
+            .noscript .disabled
+            {
+                display: block;
+            }
+        </style>
+    </head>
+    <body onLoad="document.LoginForm.username.focus();">
+        <script type="text/javascript">
+            $(document).ready(function()
+            {
+                if ((DetectBrowser.OS == "Windows") || (DetectBrowser.OS == "Mac") ||
+                    (DetectBrowser.OS == "Linux"))
+                {
+                    $('#links').removeClass('hide').addClass('show');
+                    $('#desktop_header').removeClass('hide').addClass('show');
+                    $('#desktop_footer').removeClass('hide').addClass('show');
+                    $('#br').removeClass('hide');
+                }
+                if (DetectBrowser.OS == "iOS")
+                {
+                    $('#mobile_header').removeClass('hide').addClass('show');
+                    $('#mobile_footer').removeClass('hide').addClass('show');
+                    $('#mobile_inform').removeClass('hide').addClass('show');
+                }
+            });
+
+        </script>
+        <div id="container" class="js enabled">
+            <div id="header">
+                <img src="https://login.clemson.edu/images/wordmark.gif">
+                <div id="links" class="hide">
+                    <a href="http://www.clemson.edu">Clemson Home</a> |
+                    <a href="http://www.clemson.edu/site-index/">A-Z Index</a> |
+                    <a href="http://www.clemson.edu/calendar/main.php?calendar=default">Calendar</a> |
+                    <a href="http://www.clemson.edu/campus-map/">Campus Maps</a> |
+                    <a href="http://www.clemson.edu/cusafety/">CU Safety</a> |
+                    <a href="http://www.clemson.edu/phonebook/">Phonebook</a> |
+                    <a href="http://www.clemson.edu/webcams/">Webcams</a>
+                </div>
+            </div>
+            <div id="floater"></div>
+            <div id="centered">
+                <div id="main">
+                    <div id="desktop_header" class="hide">Clemson University Login Page</div>
+                    <div id="mobile_header" class="hide"></div>
+                    _:_BODY_:_
+                    <div id="desktop_footer" class="hide">
+                        If you are experiencing problems with this login, please contact
+                        <br>
+                        the CCIT Customer Support Center by emailing
+                        <a href="mailto:ithelp@clemson.edu">ITHELP@clemson.edu</a>
+                        <br>
+                        or calling (864) 656-3494 for assistance.
+                    </div>
+                    <a href='/reset.php'>Forgotten Password?</a>
+                    <div id="mobile_footer" class="hide">
+                        Problems?  <a href="mailto:ithelp@clemson.edu">Contact CCIT</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

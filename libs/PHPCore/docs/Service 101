@@ -1,0 +1,55 @@
+First, fill in the services.xml as such with a service:
+
+<?xml version="1.0" encoding="UTF-8"?>
+<services>
+    <service>
+        <name>--> label for this service <--</name>
+        <url env="--> add environment here <--">--> add url here <--</url>
+        <token env="--> add environment here <--">--> add your token here <--</token>
+        <api>
+            <name>--> add label for the api <--</name>
+            <file>--> add file for the api <--</file>
+        </api>
+    </service>
+</services>
+
+There may be as many url, token, and api elements as needed.
+Additionally, api elements may have their own tokens.
+For example:
+
+<?xml version="1.0" encoding="UTF-8"?>
+<services>
+    <service>
+        <name>Log</name>
+        <url env="dev">alsutilities.dev.clemson.edu/services/log/</url>
+        <token env="dev">123456789123456789</token>
+        <api>
+            <name>log</name>
+            <file>log.php</file>
+        </api>
+        <api>
+            <name>get-contents</name>
+            <file>get-contents.php</file>
+            <token env="dev">321654987321654987</token>
+        </api>
+    </service>
+</services>
+
+To use the information that is in this file, pull in services.php from /libs/PHPCore/includes
+and then use the cService class that has been loaded with the information from this file.
+
+For example, I want to setup logging through the service I specified in the file,
+so I'll load up the service logging class with the information from cService by
+pulling out the service, api, and token information for the current environment:
+
+<?php
+    // get the service logger
+    require_once sCORE_INC_PATH . '/classes/cLogService.php';
+
+    // set the APIs for the log service to use
+    cLogService::SetLogApi( cService::GetServiceApiPath( sAPPLICATION_ENV, 'Log', 'log' ) );
+    cLogService::SetGetContentsApi( cService::GetServiceApiPath( sAPPLICATION_ENV, 'Log', 'get-contents' ) );
+
+    // set the consumer token for all the log
+    cLogService::SetConsumerToken( cService::GetServiceToken( sAPPLICATION_ENV, 'Log' ) );
+?>

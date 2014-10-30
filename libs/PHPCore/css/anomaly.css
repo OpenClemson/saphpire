@@ -1,0 +1,56 @@
+body {background: #f1f1f1;color:#1f1f1f;font-family: Calibri;font-size:11pt;text-shadow:1px 1px 1px #fff;}
+h1, h2, h3 {margin: 0;padding:0;clear:both;}
+.anomaly > div {}
+.anomaly h1 {font-size: 170%;font-weight: bold;}
+.anomaly h2 {font-size: 130%}
+.anomaly h3 {font-size: 115%}
+.anomaly .info {border:1px solid #ccc;border-radius: 5px;padding:3px 5px;background: #E8E8E8; margin-bottom:5px;overflow: hidden;}
+.anomaly .info ul {margin:0;padding:0;list-style-type: none;float:left;}
+.anomaly .info .app{float:right;font-size:150%;}
+.anomaly .info .explanations {float: right;clear: right;}
+.anomaly .info .error {color: crimson;padding-top: 5px;padding-bottom: 5px;}
+.anomaly .info .title {font-weight: bold;display: inline-block;width: 50px}
+.anomaly .info .data {}
+.anomaly pre {font-size: 90%}
+.anomaly .context {}
+.anomaly .stack {}
+.debug-header { font-family: monospace; font-size: 14px; font-weight: normal; color: white; text-align: center; cursor: pointer; text-shadow: none; }
+.debug-type   { font-family: monospace; font-size: 14px; font-weight: normal; text-align: center; }
+.debug-boolean { border: 1px solid #3498DB; }
+.debug-boolean .debug-header { background: #3498DB; }
+.debug-boolean .debug-value { border-top: 1px solid #3498DB; }
+.debug-integer { border: 1px solid #da4f49; }
+.debug-integer .debug-header { background: #da4f49; }
+.debug-integer .debug-value { border-top: 1px solid #da4f49; }
+.debug-null { border: 1px solid #C5C5C5; }
+.debug-null .debug-header { background: #C5C5C5; }
+.debug-null .debug-value { border-top: 1px solid #C5C5C5; }
+.debug-string { border: 1px solid #F4C430; }
+.debug-string .debug-value { border-top: 1px solid #F4C430; }
+.debug-string .debug-header { background: #F4C430; }
+.debug-closure { border: 1px solid #5bb75b; }
+.debug-closure .debug-header { background: #5bb75b; }
+.debug-closure .debug-value { border-top: 1px solid #5bb75b; }
+.debug-object { border: 1px solid #CC99CC; }
+.debug-object .debug-header { background: #CC99CC; }
+.debug-object .debug-value { border-top: 1px solid #CC99CC; }
+.debug-array { border: 1px solid #49afcd; }
+.debug-array .debug-header { background: #49afcd; }
+.debug-array .debug-value { border-top: 1px solid #49afcd; }
+.debug-table { border-spacing: 0; margin: 15px; text-shadow: none; float: left; }
+.debug-table td { padding: 5px; background: white; }
+.debug-value { max-width: 800px; overflow-x: auto; }
+span.debug-table { clear: both; margin-top: 15px; }
+.debug-table { min-width: 250px; max-width: 250px; }
+.context-line, .context-code {float:left;}
+.context-line {clear: left; width: 30px; padding-right: 10px; text-align: right;border-right: 2px solid lightblue;}
+.context-full pre {padding: 0 10px 0 0; margin:0;}
+.trace-arg { display: inline; border: none;}
+.frame > span, .anomaly-dialog-open {cursor: pointer;}
+.xdebug-error {margin-left:100px;}
+.code-wrap {background: #f5f2f0;float:left;padding-top: 10px;padding-bottom:10px;}
+.highlight .language-php{text-shadow: none;}
+.highlight pre.language-php{background-color:rgba(255,0,0,0.2);}
+.trace-arg .debug-header{ font-size: inherit; padding: 0 10px 0 10px; border-radius: 15px; }
+.ui-accordion .ui-accordion-icons{font-size: large;}
+.token.operator, .token.entity, .token.url, .language-css .token.string, .style .token.string, .token.variable {background: none;}

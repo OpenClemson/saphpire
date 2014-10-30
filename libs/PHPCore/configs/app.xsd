@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:annotation>
+        <xs:documentation xml:lang="en">
+            app
+                The root node, app, is a complex type that includes multiple child nodes.
+                Each child node can only appear once at most.
+        </xs:documentation>
+    </xs:annotation>
+    <xs:element name="app">
+        <xs:complexType>
+            <xs:all>
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">
+                        application-name
+                            The application-name element represents the name of this application.
+                            It must be a string of length >= 3 and it is required for all applications.
+
+                        release-date
+                            The release date of the application.
+
+                            It must be a date time in the format YYYY-MM-DDTHH:MM:SS.
+                            Where YYYY is the year, MM is the month, DD is the day,
+                            T is the separator between date and time, HH is the hour,
+                            MM is the minutes, and SS is the seconds.
+
+                            It is required for all applications.
+
+                        freespace
+                            The freespace element is the minimum amount of free memory on the server that the application watches.
+                            It must be a non-negative integer and it is required for all applications.
+
+                        maintenance-window
+                            The maintenance window of an application defines when an application is in maintenance mode.
+                            It must contain a start and end element and it is required for all applications.
+                    </xs:documentation>
+                </xs:annotation>
+                <xs:element name="application-name" minOccurs="1" maxOccurs="1">
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:minLength value="3"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:element>
+                <xs:element name="release-date" type="xs:dateTime" minOccurs="1" maxOccurs="1"></xs:element>
+                <xs:element name="freespace" type="xs:nonNegativeInteger" minOccurs="1" maxOccurs="1"></xs:element>
+                <xs:element name="maintenance-window" minOccurs="1" maxOccurs="1">
+                    <xs:annotation>
+                        <xs:documentation xml:lang="en">
+                            start
+                                The start element is when the application enters maintenance mode.
+
+                                The start date may either be before the end date or equal to it.
+                                If it is before, the application will be in maintenance mode during the period set.
+                                If it is the same, the application will never be in maintenance mode.
+
+                                It must be a date time in the format YYYY-MM-DDTHH:MM:SS.
+                                Where YYYY is the year, MM is the month, DD is the day,
+                                T is the separator between date and time, HH is the hour,
+                                MM is the minutes, and SS is the seconds.
+
+                                It is required for all applications.
+
+                            end
+                                The end element is when the application leave maintenance mode.
+
+                                The end date may either be after the start date or equal to it.
+                                If it is after, the application will be in maintenance mode during the period set.
+                                If it is the same, the application will never be in maintenance mode.
+
+                                It must be a date time in the format YYYY-MM-DDTHH:MM:SS.
+                                Where YYYY is the year, MM is the month, DD is the day,
+                                T is the separator between date and time, HH is the hour,
+                                MM is the minutes, and SS is the seconds.
+
+                                It is required for all applications.
+                        </xs:documentation>
+                    </xs:annotation>
+                    <xs:complexType>
+                        <xs:all>
+                            <xs:element name="start" type="xs:dateTime" minOccurs="1" maxOccurs="1"></xs:element>
+                            <xs:element name="end" type="xs:dateTime" minOccurs="1" maxOccurs="1"></xs:element>
+                        </xs:all>
+                    </xs:complexType>
+                </xs:element>
+            </xs:all>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
